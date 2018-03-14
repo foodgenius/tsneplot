@@ -1,0 +1,32 @@
+#! /usr/bin/env python
+
+import click
+
+import tsneplot
+
+
+@click.group()
+def cli():
+    pass
+
+
+@cli.command()
+@click.option('--model', '-m', required=True, type=click.File())
+def display_all(model):
+    """Scatterplot of all words in the vocab."""
+    m = tsneplot.load_model(model)
+    tsneplot.display_all(m)
+
+
+@cli.command()
+@click.option('--model', '-m', required=True, type=click.File())
+@click.argument('words', nargs=-1)
+def display_words(model, words):
+    """Scatterplot of words in neighborhood."""
+    if words:
+        m = tsneplot.load_model(model)
+        tsneplot.display_words(m, words)
+
+
+if __name__ == '__main__':
+    cli()
