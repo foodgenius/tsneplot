@@ -1,0 +1,14 @@
+*.pyc
+*.pyo
+*.extracted.txt
+*.egg-info/
+build/
+dist/
+venv/
+cover/
+.coverage
+test-reports/
+.eggs/
+.cache/
+
+data/
